@@ -9,13 +9,29 @@ const User = require('../models/User');
 // Get all complaints
 const createEnqury = async (req, res) => {
   try {
-    const { userId, category, description, media } = req.body;
-    const complaint = new Complaint({
-      user: userId,
-      category,
-      description,
-      media
-    });
+    const { userId, category, description, media,typeOfComplaint } = req.body;
+    if(typeOfComplaint === 'Train'){
+      const {pnrNumber}=req.body;
+      const complaint = new Complaint({
+        user: userId,
+        category,
+        description,
+        media,
+        typeOfComplaint,
+        pnrNumber
+      });
+    }
+    else{
+      const {stationName}=req.body;
+      const complaint = new Complaint({
+        user: userId,
+        category,
+        description,
+        media,
+        typeOfComplaint,
+        stationName
+      });
+    }
     await complaint.save();
     res.status(201).json(complaint);
   } catch (err) {
@@ -92,9 +108,26 @@ const getComplaintByCategory = async (req, res) => {
     res.status(500).json({ message: 'Server error', error: error.message });
   }
 };
+const getAllStationComplaint = async (req, res) => {
+  try {
+    const stationName = req.params.station;
+
+    // Fetch complaints by user
+    const complaints = await Complaint.find({ stationName });
+
+    // Check if any complaints were found
+    if (complaints.length === 0) {
+      return res.status(404).json({ message: 'No complaints found for this user' });
+    }
+
+    // Return the found complaints
+    res.status(200).json(complaints);
+  } catch (error) {
+    res.status(500).json({ message: 'Server error', error: error.message });
+  }
+};
 
 
 
 
-
-module.exports = { createEnqury, getEnqury, getComplaintByCategory  , getComplaintByUser};
+module.exports = { createEnqury, getEnqury, getComplaintByCategory  , getComplaintByUser,getAllStationComplaint};

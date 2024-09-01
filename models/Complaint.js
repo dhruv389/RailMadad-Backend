@@ -49,7 +49,24 @@ const complaintSchema = new mongoose.Schema({
   updatedAt: {
     type: Date,
     default: Date.now
+  },
+  typeOfComplaint: {
+    type: String,
+    enum: ['Station', 'Train'],
+    required: true
+  },
+  stationName: {
+    type: String,
+    // required: true
   }
+  , department: {
+    type: String,
+    required: true
+  },
+  pnrNumber: {
+    type: Number,
+    // required: true
+  },
 });
 
 module.exports = mongoose.model('Complaint', complaintSchema);

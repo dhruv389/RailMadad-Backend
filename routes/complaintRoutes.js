@@ -1,5 +1,5 @@
 const express = require('express');
-const { createEnqury , getEnqury,  getComplaintByCategory , getComplaintByUser } = require('../controllers/Complaints');
+const { createEnqury , getEnqury,  getComplaintByCategory , getComplaintByUser,getAllStationComplaint } = require('../controllers/Complaints');
 
 const router = express.Router();
 
@@ -8,7 +8,8 @@ const router = express.Router();
 // router.post('/check', check);
 router.post('/create', createEnqury);
 router.get('/getdata', getEnqury);
-router.get('/Categories/:category', getComplaintByCategory);
-router.get('/User/:user', getComplaintByUser);
+router.get('/Categories/:category', getComplaintByCategory); // all category complain
+router.get('/User/:user', getComplaintByUser); //all user complain 
+router.get('/Station/:station', getAllStationComplaint); //all user complain 
 
 module.exports = router; 
