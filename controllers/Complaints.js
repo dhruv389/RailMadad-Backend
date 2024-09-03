@@ -58,20 +58,13 @@ const getComplaintByCategory = async (req, res) => {
 
     // Validate if the category exists in the enum
     const validCategories = [
-      'Coach Cleanliness',
-      'Toilet Hygiene',
-      'Food Quality',
-      'Ticketing Issues',
-      'Staff Behavior',
-      'Punctuality and Delays',
-      'AC/Non-AC Issues',
-      'Safety Concerns',
-      'Luggage Issues',
-      'Reservation Problems',
-      'Facilities for Differently-Abled Passengers',
-      'Water Supply',
-      'Noise Disturbances',
-      'Electrical Issues'
+      'Engineering Department',
+      'Electrical Department',
+      'Traffic Department',
+      'Medical Department',
+      'Security Department',
+      'Sanitation Department',
+      'Food Department',  
     ];
 
     if (!validCategories.includes(category)) {

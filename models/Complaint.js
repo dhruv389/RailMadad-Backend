@@ -9,20 +9,13 @@ const complaintSchema = new mongoose.Schema({
   category: {
     type: String,
     enum: [
-      'Coach Cleanliness',
-      'Toilet Hygiene',
-      'Food Quality',
-      'Ticketing Issues',
-      'Staff Behavior',
-      'Punctuality and Delays',
-      'AC/Non-AC Issues',
-      'Safety Concerns',
-      'Luggage Issues',
-      'Reservation Problems',
-      'Facilities for Differently-Abled Passengers',
-      'Water Supply',
-      'Noise Disturbances',
-      'Electrical Issues'
+      'Engineering Department',
+    'Electrical Department',
+    'Traffic Department',
+    'Medical Department',
+    'Security Department',
+    'Sanitation Department',
+    'Food Department',
     ],
     required: true
   },
@@ -50,6 +43,6 @@ const complaintSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   }
-});
+} );
 
 module.exports = mongoose.model('Complaint', complaintSchema);

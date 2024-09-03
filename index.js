@@ -14,10 +14,13 @@ app.use(cors());
 
 require("dotenv").config();
 // Middleware
+
 app.use(bodyParser.json());
 
 // Parse URL-encoded bodies
 app.use(bodyParser.urlencoded({ extended: true }));
+
+
 app.use(morgan('dev'));
 
 // Routes
