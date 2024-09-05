@@ -57,6 +57,13 @@ const complaintSchema = new mongoose.Schema({
     type: Number,
     // required: true
   },
+  staffmedia: [
+    {
+      type: String, // URL of the media
+      required: false
+    }
+  ],
+
 });
 
 module.exports = mongoose.model('Complaint', complaintSchema);
